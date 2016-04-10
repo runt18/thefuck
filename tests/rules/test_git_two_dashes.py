@@ -5,7 +5,7 @@ from tests.utils import Command
 
 @pytest.fixture
 def stderr(meant):
-    return 'error: did you mean `%s` (with two dashes ?)' % meant
+    return 'error: did you mean `{0!s}` (with two dashes ?)'.format(meant)
 
 
 @pytest.mark.parametrize('command', [

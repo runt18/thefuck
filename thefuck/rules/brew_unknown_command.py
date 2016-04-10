@@ -25,7 +25,7 @@ def _get_brew_tap_specific_commands(brew_path_prefix):
     brew_taps_path = brew_path_prefix + TAP_PATH
 
     for user in _get_directory_names_only(brew_taps_path):
-        taps = _get_directory_names_only(brew_taps_path + '/%s' % user)
+        taps = _get_directory_names_only(brew_taps_path + '/{0!s}'.format(user))
 
         # Brew Taps's naming rule
         # https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/brew-tap.md#naming-conventions-and-limitations
