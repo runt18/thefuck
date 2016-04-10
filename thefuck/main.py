@@ -20,7 +20,7 @@ def fix_command():
     """Fixes previous command. Used when `thefuck` called without arguments."""
     settings.init()
     with logs.debug_time('Total'):
-        logs.debug(u'Run with settings: {}'.format(pformat(settings)))
+        logs.debug(u'Run with settings: {0}'.format(pformat(settings)))
 
         try:
             command = types.Command.from_raw_script(sys.argv[1:])
@@ -65,7 +65,7 @@ def main():
     parser.add_argument(
             '-v', '--version',
             action='version',
-            version='The Fuck {} using Python {}'.format(
+            version='The Fuck {0} using Python {1}'.format(
                     version, sys.version.split()[0]))
     parser.add_argument('-a', '--alias',
                         action='store_true',

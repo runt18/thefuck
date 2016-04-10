@@ -121,13 +121,13 @@ def get_all_executables():
 
 def replace_argument(script, from_, to):
     """Replaces command line argument."""
-    replaced_in_the_end = re.sub(u' {}$'.format(re.escape(from_)), u' {}'.format(to),
+    replaced_in_the_end = re.sub(u' {0}$'.format(re.escape(from_)), u' {0}'.format(to),
                                  script, count=1)
     if replaced_in_the_end != script:
         return replaced_in_the_end
     else:
         return script.replace(
-            u' {} '.format(from_), u' {} '.format(to), 1)
+            u' {0} '.format(from_), u' {0} '.format(to), 1)
 
 
 @decorator
@@ -158,7 +158,7 @@ def is_app(command, *app_names, **kwargs):
 
     at_least = kwargs.pop('at_least', 0)
     if kwargs:
-        raise TypeError("got an unexpected keyword argument '{}'".format(kwargs.keys()))
+        raise TypeError("got an unexpected keyword argument '{0}'".format(kwargs.keys()))
 
     if command.script_parts is not None and len(command.script_parts) > at_least:
         return command.script_parts[0] in app_names
@@ -215,7 +215,7 @@ def cache(*depends_on):
 
         # A bit obscure, but simplest way to generate unique key for
         # functions and methods in python 2 and 3:
-        key = '{}.{}'.format(fn.__module__, repr(fn).split('at')[0])
+        key = '{0}.{1}'.format(fn.__module__, repr(fn).split('at')[0])
 
         etag = '.'.join(_get_mtime(name) for name in depends_on)
         cache_path = _get_cache_path()

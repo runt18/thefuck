@@ -28,7 +28,7 @@ def exception(title, exc_info):
 
 
 def rule_failed(rule, exc_info):
-    exception(u'Rule {}'.format(rule.name), exc_info)
+    exception(u'Rule {0}'.format(rule.name), exc_info)
 
 
 def failed(msg):
@@ -76,7 +76,7 @@ def debug_time(msg):
     try:
         yield
     finally:
-        debug(u'{} took: {}'.format(msg, datetime.now() - started))
+        debug(u'{0} took: {1}'.format(msg, datetime.now() - started))
 
 
 def how_to_configure_alias(configuration_details):

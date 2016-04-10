@@ -125,5 +125,5 @@ def test_not_match(script, stderr):
     ('pes', ['ps', 'push', 'pause']),
     ('tags', ['tag', 'stats', 'images'])])
 def test_get_new_command(wrong, fixed):
-    command = Command('docker {}'.format(wrong), stderr=stderr(wrong))
-    assert get_new_command(command) == ['docker {}'.format(x) for x in fixed]
+    command = Command('docker {0}'.format(wrong), stderr=stderr(wrong))
+    assert get_new_command(command) == ['docker {0}'.format(x) for x in fixed]

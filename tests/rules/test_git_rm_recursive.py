@@ -5,7 +5,7 @@ from tests.utils import Command
 
 @pytest.fixture
 def stderr(target):
-    return "fatal: not removing '{}' recursively without -r".format(target)
+    return "fatal: not removing '{0}' recursively without -r".format(target)
 
 
 @pytest.mark.parametrize('script, target', [

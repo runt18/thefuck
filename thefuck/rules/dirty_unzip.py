@@ -22,7 +22,7 @@ def _zip_file(command):
             if c.endswith('.zip'):
                 return c
             else:
-                return u'{}.zip'.format(c)
+                return u'{0}.zip'.format(c)
 
 
 @for_app('unzip')
@@ -38,7 +38,7 @@ def match(command):
 
 
 def get_new_command(command):
-    return u'{} -d {}'.format(
+    return u'{0} -d {1}'.format(
             command.script, shell.quote(_zip_file(command)[:-4]))
 
 

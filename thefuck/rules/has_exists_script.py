@@ -10,4 +10,4 @@ def match(command):
 
 @sudo_support
 def get_new_command(command):
-    return u'./{}'.format(command.script)
+    return u'./{0}'.format(command.script)

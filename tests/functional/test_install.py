@@ -19,7 +19,7 @@ def test_installation(spawnu, shell, TIMEOUT, tag, dockerfile):
     proc.sendline(u'cat /src/install.sh | sh - && $0')
     proc.sendline(u'thefuck --version')
     version = get_installation_info().version
-    assert proc.expect([TIMEOUT, u'thefuck {}'.format(version)],
+    assert proc.expect([TIMEOUT, u'thefuck {0}'.format(version)],
                        timeout=600)
     proc.sendline(u'fuck')
     assert proc.expect([TIMEOUT, u'No fucks given'])

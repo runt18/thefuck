@@ -38,7 +38,7 @@ class Fish(Generic):
         aliases = self.get_aliases()
         binary = command_script.split(' ')[0]
         if binary in aliases:
-            return u'fish -ic "{}"'.format(command_script.replace('"', r'\"'))
+            return u'fish -ic "{0}"'.format(command_script.replace('"', r'\"'))
         else:
             return command_script
 
@@ -50,7 +50,7 @@ class Fish(Generic):
         return os.path.expanduser('~/.config/fish/fish_history')
 
     def _get_history_line(self, command_script):
-        return u'- cmd: {}\n   when: {}\n'.format(command_script, int(time()))
+        return u'- cmd: {0}\n   when: {1}\n'.format(command_script, int(time()))
 
     def _script_from_history(self, line):
         if '- cmd: ' in line:

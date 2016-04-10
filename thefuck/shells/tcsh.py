@@ -28,7 +28,7 @@ class Tcsh(Generic):
                               os.path.expanduser('~/.history'))
 
     def _get_history_line(self, command_script):
-        return u'#+{}\n{}\n'.format(int(time()), command_script)
+        return u'#+{0}\n{1}\n'.format(int(time()), command_script)
 
     def how_to_configure(self):
         return 'eval `thefuck --alias`', '~/.tcshrc'

@@ -19,11 +19,11 @@ else:
 version = sys.version_info[:2]
 if version < (2, 7):
     print('thefuck requires Python version 2.7 or later' +
-          ' ({}.{} detected).'.format(*version))
+          ' ({0}.{1} detected).'.format(*version))
     sys.exit(-1)
 elif (3, 0) < version < (3, 3):
     print('thefuck requires Python version 3.3 or later' +
-          ' ({}.{} detected).'.format(*version))
+          ' ({0}.{1} detected).'.format(*version))
     sys.exit(-1)
 
 VERSION = '3.7'

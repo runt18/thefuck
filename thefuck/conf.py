@@ -36,7 +36,7 @@ class Settings(dict):
             with settings_path.open(mode='w') as settings_file:
                 settings_file.write(const.SETTINGS_HEADER)
                 for setting in const.DEFAULT_SETTINGS.items():
-                    settings_file.write(u'# {} = {}\n'.format(*setting))
+                    settings_file.write(u'# {0} = {1}\n'.format(*setting))
 
     def _get_user_dir_path(self):
         # for backward compatibility, use `~/.thefuck` if it exists

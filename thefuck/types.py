@@ -33,7 +33,7 @@ class Command(object):
             try:
                 self._script_parts = shell.split_command(self.script)
             except Exception:
-                logs.debug(u"Can't split command script {} because:\n {}".format(
+                logs.debug(u"Can't split command script {0} because:\n {1}".format(
                         self, sys.exc_info()))
                 self._script_parts = None
         return self._script_parts
@@ -46,7 +46,7 @@ class Command(object):
             return False
 
     def __repr__(self):
-        return u'Command(script={}, stdout={}, stderr={})'.format(
+        return u'Command(script={0}, stdout={1}, stderr={2})'.format(
                 self.script, self.stdout, self.stderr)
 
     def update(self, **kwargs):
@@ -113,14 +113,14 @@ class Command(object):
         env = dict(os.environ)
         env.update(settings.env)
 
-        with logs.debug_time(u'Call: {}; with env: {};'.format(script, env)):
+        with logs.debug_time(u'Call: {0}; with env: {1};'.format(script, env)):
             result = Popen(script, shell=True, stdin=PIPE, stdout=PIPE, stderr=PIPE, env=env)
             if cls._wait_output(result):
                 stdout = result.stdout.read().decode('utf-8')
                 stderr = result.stderr.read().decode('utf-8')
 
-                logs.debug(u'Received stdout: {}'.format(stdout))
-                logs.debug(u'Received stderr: {}'.format(stderr))
+                logs.debug(u'Received stdout: {0}'.format(stdout))
+                logs.debug(u'Received stderr: {0}'.format(stderr))
 
                 return cls(script, stdout, stderr)
             else:
@@ -181,7 +181,7 @@ class Rule(object):
 
         """
         name = path.name[:-3]
-        with logs.debug_time(u'Importing rule: {};'.format(name)):
+        with logs.debug_time(u'Importing rule: {0};'.format(name)):
             rule_module = load_source(name, str(path))
             priority = getattr(rule_module, 'priority', DEFAULT_PRIORITY)
         return cls(name, rule_module.match,
@@ -220,7 +220,7 @@ class Rule(object):
             return False
 
         try:
-            with logs.debug_time(u'Trying rule: {};'.format(self.name)):
+            with logs.debug_time(u'Trying rule: {0};'.format(self.name)):
                 if compatibility_call(self.match, command):
                     return True
         except Exception:
@@ -269,7 +269,7 @@ class CorrectedCommand(object):
         return (self.script, self.side_effect).__hash__()
 
     def __repr__(self):
-        return u'CorrectedCommand(script={}, side_effect={}, priority={})'.format(
+        return u'CorrectedCommand(script={0}, side_effect={1}, priority={2})'.format(
                 self.script, self.side_effect, self.priority)
 
     def run(self, old_cmd):
@@ -281,6 +281,6 @@ class CorrectedCommand(object):
         if self.side_effect:
             compatibility_call(self.side_effect, old_cmd, self.script)
         # This depends on correct setting of PYTHONIOENCODING by the alias:
-        logs.debug(u'PYTHONIOENCODING: {}'.format(
+        logs.debug(u'PYTHONIOENCODING: {0}'.format(
             os.environ.get('PYTHONIOENCODING', '!!not-set!!')))
         print(self.script)

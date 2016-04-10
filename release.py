@@ -14,8 +14,8 @@ def get_new_setup_py_lines():
     for line in current_setup:
         if line.startswith('VERSION = '):
             major, minor = re.findall(r"VERSION = '(\d+)\.(\d+)'", line)[0]
-            version = "{}.{}".format(major, int(minor) + 1)
-            yield "VERSION = '{}'\n".format(version)
+            version = "{0}.{1}".format(major, int(minor) + 1)
+            yield "VERSION = '{0}'\n".format(version)
         else:
             yield line
 
@@ -25,8 +25,8 @@ with open('setup.py', 'w') as sf:
     sf.writelines(lines)
 
 call('git pull', shell=True)
-call('git commit -am "Bump to {}"'.format(version), shell=True)
-call('git tag {}'.format(version), shell=True)
+call('git commit -am "Bump to {0}"'.format(version), shell=True)
+call('git tag {0}'.format(version), shell=True)
 call('git push', shell=True)
 call('git push --tags', shell=True)
 

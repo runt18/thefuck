@@ -95,5 +95,5 @@ class TestInitializeSettingsFile(object):
         assert settings_path_mock.open.call_count == 1
         assert const.SETTINGS_HEADER in settings_file_contents
         for setting in const.DEFAULT_SETTINGS.items():
-            assert '# {} = {}\n'.format(*setting) in settings_file_contents
+            assert '# {0} = {1}\n'.format(*setting) in settings_file_contents
         settings_file.close()

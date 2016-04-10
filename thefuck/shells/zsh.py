@@ -36,7 +36,7 @@ class Zsh(Generic):
                               os.path.expanduser('~/.zsh_history'))
 
     def _get_history_line(self, command_script):
-        return u': {}:0;{}\n'.format(int(time()), command_script)
+        return u': {0}:0;{1}\n'.format(int(time()), command_script)
 
     def _script_from_history(self, line):
         if ';' in line:

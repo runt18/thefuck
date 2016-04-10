@@ -35,8 +35,8 @@ def match(command):
 
 def get_new_command(command):
     if '&&' in command.script:
-        return u'sudo sh -c "{}"'.format(" ".join([part for part in command.script_parts if part != "sudo"]))
+        return u'sudo sh -c "{0}"'.format(" ".join([part for part in command.script_parts if part != "sudo"]))
     elif '>' in command.script:
-        return u'sudo sh -c "{}"'.format(command.script.replace('"', '\\"'))
+        return u'sudo sh -c "{0}"'.format(command.script.replace('"', '\\"'))
     else:
-        return u'sudo {}'.format(command.script)
+        return u'sudo {0}'.format(command.script)

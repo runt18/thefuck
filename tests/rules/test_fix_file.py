@@ -243,7 +243,7 @@ def test_get_new_command_with_settings(mocker, monkeypatch, test, settings):
 
     if test[3]:
         assert (get_new_command(cmd) ==
-            u'dummy_editor {} +{}:{} && {}'.format(test[1], test[2], test[3], test[0]))
+            u'dummy_editor {0} +{1}:{2} && {3}'.format(test[1], test[2], test[3], test[0]))
     else:
         assert (get_new_command(cmd) ==
-            u'dummy_editor {} +{} && {}'.format(test[1], test[2], test[0]))
+            u'dummy_editor {0} +{1} && {2}'.format(test[1], test[2], test[0]))
